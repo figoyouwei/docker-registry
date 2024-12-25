@@ -2,6 +2,7 @@ name: docker-registry
 
 services:
   server:
+    container_name: registry-service
     image: registry:2
     restart: always
     ports:
