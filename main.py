@@ -34,10 +34,10 @@ def tag_and_push_image(image_name: str, registry_url: str = "localhost:5000") ->
 if __name__ == "__main__":
     # Get image name from user
     image_name = input("Enter the Docker image name (e.g. hello-world): ")
+    print(f"Preparing image: {image_name}")
     
     # Tag and push the image
     if tag_and_push_image(image_name):
-        print(f"Preparing image: {image_name}")
         print(f"Successfully tagged and pushed {image_name} to localhost:5000")
     else:
         print("Failed to tag and push image")

@@ -38,9 +38,16 @@ docker run www.docker-registry.asia/hello-world
 ## 7.Inspect the image
 ```
 docker inspect nginx:latest | grep -i version
+docker images | grep localhost
 ```
 
 ## 8.Repositories
 ```
 storage/docker/registry/v2/repositories
+``` 
+
+## 9.Pull image from registry with a different name
+```
+docker pull www.docker-registry.asia/nginx:latest --platform linux/amd64
+docker tag www.docker-registry.asia/nginx:latest nginx1226:test
 ``` 
