@@ -11,23 +11,24 @@ sudo docker-compose up -d
 curl http://localhost:5000/v2/_catalog
 curl http://43.129.80.220:5000/v2/_catalog
 curl https://www.docker-registry.asia/v2/_catalog
+curl http://43.129.80.220/v2/_catalog
 ```
 
-## 3.Pull,Tag and Push image to registry
+## 3.Pull,Tag and Push image to registry from docker.io
 ```
 docker pull hello-world
 docker tag hello-world localhost:5000/hello-world
 docker push localhost:5000/hello-world
 ```
 
-## 4.Solve the https issue & pull image on local machine
+## 4.Pull image on local machine
 ```
-docker pull www.docker-registry.asia/hello-world
+docker pull www.docker-registry.asia/nginx:latest
 ```
 
 ## 5.Run the image on local macbook
 ```
-docker run --platform linux/amd64 www.docker-registry.asia/hello-world
+docker run --platform linux/amd64 www.docker-registry.asia/nginx:latest
 ```
 
 ## 6.Run the image on suaee
@@ -47,7 +48,15 @@ storage/docker/registry/v2/repositories
 ``` 
 
 ## 9.Pull image from registry with a different name
+- Docker requires ssl
+```
+docker pull www.docker-registry.asia/nginx:latest
+``` 
+- Pull with platform
 ```
 docker pull www.docker-registry.asia/nginx:latest --platform linux/amd64
+```
+- Tag after pull
+```
 docker tag www.docker-registry.asia/nginx:latest nginx1226:test
-``` 
+```
