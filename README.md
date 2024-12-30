@@ -8,10 +8,17 @@ sudo docker-compose up -d
 
 ## 2.Verify the registry is running
 ```
+# locahost registry at port 5000
 curl http://localhost:5000/v2/_catalog
+
+# ip registry at port 5000
 curl http://43.129.80.220:5000/v2/_catalog
-curl https://www.docker-registry.asia/v2/_catalog
+
+# ip registry at port 80    
 curl http://43.129.80.220/v2/_catalog
+
+# domain registry
+curl https://www.docker-registry.asia/v2/_catalog
 ```
 
 ## 3.Pull,Tag and Push image to registry from docker.io
@@ -59,4 +66,17 @@ docker pull www.docker-registry.asia/nginx:latest --platform linux/amd64
 - Tag after pull
 ```
 docker tag www.docker-registry.asia/nginx:latest nginx1226:test
+```
+
+## 10.Push Existing Image to Registry
+```bash
+# Tag the image with registry domain
+docker tag <source-image>:<tag> www.docker-registry.asia/<image-name>:<tag>
+
+# Push to registry
+docker push www.docker-registry.asia/<image-name>:<tag>
+
+# Example with TimescaleDB
+docker tag timescale/timescaledb-ha:pg16 localhost:5000/timescaledb-ha:pg16
+docker push localhost:5000/timescaledb-ha:pg16
 ```
